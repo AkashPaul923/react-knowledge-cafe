@@ -1,26 +1,30 @@
 import PropTypes from 'prop-types';
+import { CiBookmark } from "react-icons/ci";
 
 const Blog = ({blog}) => {
     const {title, cover,author_img,author,posted_date,reading_time,hashtags} = blog
     return (
-        <div>
-            <img src={cover} alt={`pic of ${title}`} />
-            <div className='flex justify-between items-center'>
+        <div className='mb-20 p-6 border-b-2'>
+            <img className='w-full  border border-solid rounded-lg' src={cover} alt={`pic of ${title}`} />
+            <div className='flex justify-between items-center mt-8'>
                 <div className='flex items-center gap-6'>
                     <img className='w-14' src={author_img} alt="" />
                     <div>
-                        <h2>{author}</h2>
-                        <p>{posted_date}</p>
+                        <h2 className='text-2xl font-bold'>{author}</h2>
+                        <p className='text-base font-semibold text-gray-500'>{posted_date}</p>
                     </div>
                 </div>
-                <div>
+                <div className='flex items-center gap-3 text-xl font-medium text-gray-500'>
                     <span>{reading_time} min read</span>
+                    <button><CiBookmark /></button>
                 </div>
             </div>
-            <h2 className="text-4xl font-bold">{title}</h2>
+            <h2 className="my-4 text-4xl font-extrabold">{title}</h2>
             {
-                hashtags.map((hashtag, idx) => <span key ={idx}><a href=''> #{hashtag} </a></span> )
+                hashtags.map((hashtag, idx) => <span key ={idx}><a className='text-xl font-medium text-gray-400' href=''> #{hashtag} </a></span> )
             }
+            <br />
+            <a className='text-xl font-medium text-violet-600 underline' href=''>Mark as Read</a>
         </div>
     );
 };
